@@ -1,8 +1,8 @@
 # 設定 Multiboot 標準參數
-.set ALIGN,    1<<0             # 頁面對齊
-.set MEMINFO,  1<<1             # 提供記憶體地圖
+.set ALIGN,    1<<0             
+.set MEMINFO,  1<<1             
 .set FLAGS,    ALIGN | MEMINFO
-.set MAGIC,    0x1BADB002       # 核心魔數 (GRUB 識別用)
+.set MAGIC,    0x1BADB002       
 .set CHECKSUM, -(MAGIC + FLAGS)
 
 .section .multiboot
@@ -19,10 +19,13 @@ stack_top:
 
 .section .text
 .global _start
+
 _start:
 	mov $stack_top, %esp    # 設定堆疊指針
-	extern kernel_main
-	call kernel_main        # 進入 C 語言核心
+    
+	# 注意：在 GNU as 中，不需要寫 extern kernel_main
+	call kernel_main        
+    
 	cli
-1:	hlt                     # 當核心結束時進入死迴圈
+1:	hlt                     
 	jmp 1b
