@@ -23,7 +23,7 @@ jobs:
     - name: Install Dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y build-essential gcc-multilib grub-common xorriso grub-pc-bin
+        sudo apt-get install -y build-essential gcc-multilib grub-common xorriso grub-pc-bin mtools
 
     # 3. 執行編譯 (使用你之前的 Makefile)
     - name: Compile and Link
