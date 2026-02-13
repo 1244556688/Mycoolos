@@ -1,7 +1,7 @@
 CC = gcc
 AS = as
 CFLAGS = -std=gnu99 -ffreestanding -O2 -Wall -Wextra -m32
-LDFLAGS = -ffreestanding -O2 -nostdlib -m32 -T linker.ld
+LDFLAGS = -ffreestanding -O2 -nostdlib -m32 -T linker.ld -no-pie
 
 OBJS = boot.o kernel.o graphics.o mouse.o
 KERNEL_BIN = myos.bin
